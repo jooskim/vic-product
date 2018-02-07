@@ -7,4 +7,6 @@ WORKDIR /usr/src/app
 COPY . ./
 RUN [ "npm", "install" ]
 RUN [ "npm", "run", "build:prod" ]
-CMD [ "/bin/bash" ]
+
+EXPOSE 4200
+CMD [ "npm", "run", "server:dev" ]
