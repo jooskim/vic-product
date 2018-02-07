@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MainViewComponent } from './main-view.component';
+import { ClarityModule } from '@clr/angular';
 
 describe('MainViewComponent', () => {
   let component: MainViewComponent;
@@ -8,6 +9,9 @@ describe('MainViewComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        ClarityModule
+      ],
       declarations: [ MainViewComponent ]
     })
     .compileComponents();

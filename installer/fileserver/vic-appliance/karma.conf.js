@@ -16,7 +16,7 @@ module.exports = function (config) {
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
     coverageIstanbulReporter: {
-      reports: [ 'html', 'lcovonly' ],
+      reports: [ 'html', 'lcovonly', 'text-summary' ],
       fixWebpackSourcePaths: true
     },
     angularCli: {
@@ -27,7 +27,22 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome'],
-    singleRun: false
+    browsers: ['ChromeNoSandboxHeadless'],
+    customLaunchers: {
+      ChromeNoSandboxHeadless: {
+        base: 'Chrome',
+        flags: [
+          '--no-sandbox',
+          '--headless',
+          '--disable-gpu',
+          '--remote-debugging-port=9222'
+        ]
+      }
+    },
+    singleRun: true,
+    captureTimeout: 60000,
+    browserDisconnectTimeout: 10000,
+    browserNoActivityTimeout: 60000,
+    browserDisconnectTolerance: 3
   });
 };

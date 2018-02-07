@@ -25,7 +25,7 @@ import { appConfigToken } from './config/app.config';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    ClarityModule.forRoot(),
+    ClarityModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule

@@ -34,7 +34,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    ClarityModule.forChild(),
+    ClarityModule,
     RouterModule.forChild(routes)
   ],
   declarations: [ MainViewComponent ],
