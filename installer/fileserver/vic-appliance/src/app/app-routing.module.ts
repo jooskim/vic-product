@@ -19,11 +19,16 @@ import { Routes, RouterModule } from '@angular/router';
 import { ApplianceInitComponent } from './applianceInit/applianceInit.component';
 import { GettingStartedComponent } from './main-view/getting-started/getting-started.component';
 import { ConfigureComponent } from './main-view/configure/configure.component';
+import { AuthGuardService } from './services/auth-guard.service';
 
 const routes: Routes = [
   // { path: 'configure', component: ApplianceInitComponent },
   { path: 'getting-started', component: GettingStartedComponent },
-  { path: 'configure', component: ConfigureComponent },
+  {
+    path: 'configure',
+    component: ConfigureComponent,
+    canActivate: [ AuthGuardService ]
+  },
   { path: '**', redirectTo: 'getting-started'}
 ];
 

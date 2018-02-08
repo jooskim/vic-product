@@ -46,7 +46,6 @@ export class AuthService {
   isLoggedIn(): boolean {
     const token = this.localStorage.get(LOCALSTORAGE_TOKEN_KEY);
     if (!token) {
-      this.localStorage.delete(LOCALSTORAGE_TOKEN_KEY);
       return false;
     }
     // TODO: implement JWT token validation

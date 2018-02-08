@@ -77,4 +77,8 @@ export class ApplianceService {
     // return this.http.get(`${this.appConfig.baseApiUrl}/initialized`)
     //   .map((results: Response | any) => results.json());
   }
+
+  getTargetVcAddress(): Observable<any> {
+    return Observable.of('something');
+  }
 }
