@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ClarityModule } from '@clr/angular';
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
+import { ApplianceInitComponent } from './applianceInit/applianceInit.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { LocalStorageService } from './services/localstorage.service';
@@ -19,7 +19,7 @@ import { appConfigToken } from './config/app.config';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    ApplianceInitComponent
   ],
   imports: [
     BrowserModule,

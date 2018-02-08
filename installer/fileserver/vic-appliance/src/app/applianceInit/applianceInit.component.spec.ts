@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LoginComponent } from './login.component';
+import { ApplianceInitComponent } from './applianceInit.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ClarityModule } from '@clr/angular';
 import { AuthService } from '../services/auth.service';
@@ -11,13 +11,13 @@ import { APP_BASE_HREF } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { appConfigToken } from '../config/app.config';
 
-describe('LoginComponent', () => {
-  let component: LoginComponent;
-  let fixture: ComponentFixture<LoginComponent>;
+describe('ApplianceInitComponent', () => {
+  let component: ApplianceInitComponent;
+  let fixture: ComponentFixture<ApplianceInitComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LoginComponent ],
+      declarations: [ ApplianceInitComponent ],
       imports: [
         FormsModule,
         ReactiveFormsModule,
@@ -45,7 +45,7 @@ describe('LoginComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoginComponent);
+    fixture = TestBed.createComponent(ApplianceInitComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

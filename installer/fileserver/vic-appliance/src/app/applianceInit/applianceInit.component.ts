@@ -25,13 +25,14 @@ import { ApplianceService } from '../services/appliance.service';
 import { appConfigToken, AppConfig } from '../config/app.config';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-init',
+  templateUrl: './applianceInit.component.html',
+  styleUrls: ['./applianceInit.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class ApplianceInitComponent implements OnInit {
   public form: FormGroup;
   public applianceStable: boolean;
+  public applianceInitialized: boolean;
 
   constructor(
     public auth: AuthService,
@@ -45,22 +46,24 @@ export class LoginComponent implements OnInit {
       password: [ '', Validators.required ]
     });
     this.applianceStable = false;
+    this.applianceInitialized = undefined;
   }
 
   ngOnInit() {
-    if (this.auth.isLoggedIn()) {
-      this.router.navigate(['']);
-      return;
-    }
-
     this.appliance.waitForApplianceReady().subscribe(v => {
       this.applianceStable = true;
+      this.appliance.isApplianceInitialized().subscribe(initialized => {
+        // appliance is already initialized. route to the main view component
+        if (initialized) {
+          this.router.navigate(['']);
+        }
+      });
     }, err => {
       console.error('too many errors! giving up');
     });
   }
 
-  authenticate() {
+  initAppliance() {
     this.auth.login(
       this.form.get('vcenter').value,
       this.form.get('username').value,

@@ -16,12 +16,12 @@
 
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './login/login.component';
+import { ApplianceInitComponent } from './applianceInit/applianceInit.component';
 
 const routes: Routes = [
   { path: '', loadChildren: './main-view/main-view.module#MainViewModule'},
-  { path: 'login', component: LoginComponent },
-  { path: '**', redirectTo: 'login'}
+  { path: 'init', component: ApplianceInitComponent },
+  { path: '**', redirectTo: 'init'}
 ];
 
 @NgModule({

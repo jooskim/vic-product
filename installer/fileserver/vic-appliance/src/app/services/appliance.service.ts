@@ -25,6 +25,9 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/zip';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/observable/range';
+import 'rxjs/add/observable/throw';
+import 'rxjs/add/observable/from';
+import 'rxjs/add/operator/delay';
 import { HttpClient } from '@angular/common/http';
 import { appConfigToken, AppConfig } from '../config/app.config';
 
@@ -32,6 +35,7 @@ import { appConfigToken, AppConfig } from '../config/app.config';
 export class ApplianceService {
   public readonly RETRY_INTERVAL = 60000;
   public readonly MAX_RETRIES = 10;
+  private isApplianceAvailable: any;
 
   constructor(
     private http: HttpClient,
@@ -42,15 +46,35 @@ export class ApplianceService {
    * Polls the endpoint every couple seconds to check
    * if the appliance is ready
    */
-  waitForApplianceReady(): Observable<any> {
-    return this.http.get(this.appConfig.baseApiUrl)
-      .retryWhen(err => {
-        return err.zip(Observable.range(1, this.MAX_RETRIES)).mergeMap(([_, i]) => {
-          if (i >= this.MAX_RETRIES) {
-            throw Observable.throw(err);
-          }
-          return Observable.timer(this.RETRY_INTERVAL);
-        });
-      });
+  waitForApplianceReady(retry: number = this.MAX_RETRIES): Observable<any> {
+    if (this.isApplianceAvailable) {
+      return Observable.of(this.isApplianceAvailable);
+    }
+
+    // TODO: hook it up with real API
+    return Observable.of(true)
+                     .do(ready => {
+                       this.isApplianceAvailable = ready;
+                     });
+
+    // return this.http.get(this.appConfig.baseApiUrl + '/bla')
+    //   .map((results: Response) => results.json())
+    //   .retryWhen(err => {
+    //     return err.zip(Observable.range(1, retry)).mergeMap(([_, i]) => {
+    //       if (i >= retry) {
+    //         throw Observable.throw(false);
+    //       }
+    //       return Observable.timer(this.RETRY_INTERVAL);
+    //     });
+    //   }).do(ready => {
+    //     this.isApplianceAvailable = ready;
+    //   });
+  }
+
+  isApplianceInitialized(): Observable<any> {
+    // TODO: hook it up with real API
+    return Observable.of(true);
+    // return this.http.get(`${this.appConfig.baseApiUrl}/initialized`)
+    //   .map((results: Response | any) => results.json());
   }
 }

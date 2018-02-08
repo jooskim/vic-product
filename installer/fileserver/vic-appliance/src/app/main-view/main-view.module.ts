@@ -20,14 +20,14 @@ import { CommonModule } from '@angular/common';
 import { MainViewComponent } from './main-view.component';
 import { ClarityModule } from '@clr/angular';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuardService } from '../services/auth-guard.service';
+import { InitGuardService } from '../services/init-guard.service';
 import { LocalStorageService } from '../services/localstorage.service';
 
 const routes: Routes = [
   {
     path: '',
     component: MainViewComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [ InitGuardService ]
   }
 ];
 
@@ -40,7 +40,7 @@ const routes: Routes = [
   declarations: [ MainViewComponent ],
   exports: [ RouterModule ],
   providers: [
-    AuthGuardService,
+    InitGuardService,
     AuthService,
     LocalStorageService
   ]
