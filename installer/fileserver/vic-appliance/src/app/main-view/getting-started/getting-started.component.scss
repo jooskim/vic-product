@@ -1,0 +1,36 @@
+/* Clarity UI overrides */
+
+.content-area {
+  padding: 0 !important;
+  background-color: #ececec;
+}
+
+.card.transparent {
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+
+/* Custom elements and containers */
+
+#infra-deploy-tools-container {
+  background-color: #efefef;
+}
+
+#infra-deploy-tools-container .card-text {
+  min-height: 120px;
+}
+
+#login-spinner {
+  width: 100%;
+  text-align: center;
+  padding: 50px;
+}
+
+#feedback-alert {
+  margin: 12px 12px 0 24px;
+}
+
+#feedback-link {
+  max-width: inherit;
+}

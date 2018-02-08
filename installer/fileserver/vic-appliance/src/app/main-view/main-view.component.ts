@@ -15,6 +15,7 @@
 */
 
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-main-view',
@@ -23,9 +24,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainViewComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public activeRoute: ActivatedRoute
+  ) { }
 
   ngOnInit() {
+
   }
 
 }

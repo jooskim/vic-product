@@ -22,6 +22,7 @@ import { ClarityModule } from '@clr/angular';
 import { RouterModule, Routes } from '@angular/router';
 import { InitGuardService } from '../services/init-guard.service';
 import { LocalStorageService } from '../services/localstorage.service';
+import { GettingStartedComponent } from './getting-started/getting-started.component';
 
 const routes: Routes = [
   {
@@ -37,7 +38,7 @@ const routes: Routes = [
     ClarityModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [ MainViewComponent ],
+  declarations: [ MainViewComponent, GettingStartedComponent ],
   exports: [ RouterModule ],
   providers: [
     InitGuardService,
