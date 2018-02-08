@@ -32,7 +32,6 @@ import { appConfigToken, AppConfig } from '../config/app.config';
 export class ApplianceInitComponent implements OnInit {
   public form: FormGroup;
   public applianceStable: boolean;
-  public applianceInitialized: boolean;
 
   constructor(
     public auth: AuthService,
@@ -46,18 +45,11 @@ export class ApplianceInitComponent implements OnInit {
       password: [ '', Validators.required ]
     });
     this.applianceStable = false;
-    this.applianceInitialized = undefined;
   }
 
   ngOnInit() {
     this.appliance.waitForApplianceReady().subscribe(v => {
       this.applianceStable = true;
-      this.appliance.isApplianceInitialized().subscribe(initialized => {
-        // appliance is already initialized. route to the main view component
-        if (initialized) {
-          this.router.navigate(['']);
-        }
-      });
     }, err => {
       console.error('too many errors! giving up');
     });

@@ -1,1 +1,52 @@
-<router-outlet></router-outlet>
+<app-init *ngIf="!applianceReady || (applianceReady && applianceInitialized !== true)">
+</app-init>
+
+<ng-container *ngIf="applianceReady">
+  <div class="main-container">
+    <header class="header-4">
+      <div class="branding">
+        <a href="/" class="nav-link">
+          <clr-icon shape="vm-bug"></clr-icon>
+          <span class="title">vSphere Integrated Containers</span>
+        </a>
+      </div>
+    </header>
+    <main class="content-container">
+        <div class="content-area">
+            <div class="col-xs-12">
+                <div class="row">
+                  <div class="col-xs-8">
+                    <h1 class="vic-header">
+                      vSphere Integrated Containers Appliance
+                    </h1>
+                  </div>
+                  <div class="col-xs text-right">
+                    <a href="https://vmware.github.io/vic-product/assets/files/html/1.3/" target="_blank" title="Documentation" class="btn btn-outline mx-0">Documentation</a>
+                  </div>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <ul id="tabNav" class="nav" role="tablist">
+                    <li role="presentation" class="nav-item">
+                      <button id="gettingStartedBtn" class="btn btn-link nav-link" type="button"
+                              routerLink="getting-started"
+                              routerLinkActive="active">
+                        Getting Started
+                      </button>
+                    </li>
+                    <li role="presentation" class="nav-item">
+                      <button id="configurationBtn" class="btn btn-link nav-link" type="button"
+                              routerLink="configure"
+                              routerLinkActive="active">
+                        Configuration
+                      </button>
+                    </li>
+                </ul>
+            </div>
+
+            <router-outlet></router-outlet>
+        </div>
+
+    </main>
+  </div>
+</ng-container>

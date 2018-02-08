@@ -15,21 +15,17 @@
 */
 
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-main-view',
-  templateUrl: './main-view.component.html',
-  styleUrls: ['./main-view.component.scss']
+  selector: 'app-configure',
+  templateUrl: './configure.component.html',
+  styleUrls: ['./configure.component.scss']
 })
-export class MainViewComponent implements OnInit {
+export class ConfigureComponent implements OnInit {
 
-  constructor(
-    public activeRoute: ActivatedRoute
-  ) { }
+  constructor() { }
 
   ngOnInit() {
-
   }
 
 }

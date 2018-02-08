@@ -17,11 +17,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ApplianceInitComponent } from './applianceInit/applianceInit.component';
+import { GettingStartedComponent } from './main-view/getting-started/getting-started.component';
+import { ConfigureComponent } from './main-view/configure/configure.component';
 
 const routes: Routes = [
-  { path: '', loadChildren: './main-view/main-view.module#MainViewModule'},
-  { path: 'init', component: ApplianceInitComponent },
-  { path: '**', redirectTo: 'init'}
+  // { path: 'configure', component: ApplianceInitComponent },
+  { path: 'getting-started', component: GettingStartedComponent },
+  { path: 'configure', component: ConfigureComponent },
+  { path: '**', redirectTo: 'getting-started'}
 ];
 
 @NgModule({
